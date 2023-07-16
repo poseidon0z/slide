@@ -62,6 +62,46 @@ function move(
   return [imgs, clicked];
 }
 
+function shuffle(
+  dimension: number,
+  imgs: [string, number][]
+): [[string, number][], number] {
+  const DIRECTIONS = [
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+  ]; // Up, Down, Left, Right
+  // Shuffle the puzzle using Fisher-Yates algorithm
+  var emptyRow = dimension - 1;
+  var emptyCol = dimension - 1;
+  var numSwaps = 100; // Number of random swaps to perform
+
+  while (numSwaps > 0) {
+    const randomDirection = Math.floor(Math.random() * 4); // Randomly select a direction (0: Up, 1: Down, 2: Left, 3: Right)
+    const newRow = emptyRow + DIRECTIONS[randomDirection][0];
+    const newCol = emptyCol + DIRECTIONS[randomDirection][1];
+
+    if (
+      newRow >= 0 &&
+      newRow < dimension &&
+      newCol >= 0 &&
+      newCol < dimension
+    ) {
+      // Swap the empty cell with the neighbor
+      const temp = imgs[emptyRow * dimension + emptyCol];
+      imgs[emptyRow * dimension + emptyCol] = imgs[newRow * dimension + newCol];
+      imgs[newRow * dimension + newCol] = temp;
+
+      emptyRow = newRow;
+      emptyCol = newCol;
+      numSwaps--;
+    }
+  }
+  const empty = emptyRow + emptyCol * 3;
+  return [imgs, empty];
+}
+
 function Board() {
   const dimension = 3;
   const [empty, setEmpty] = useState(dimension * dimension - 1);
@@ -79,7 +119,9 @@ function Board() {
   img_orig[empty] = ["src/assets/transparent.png", empty];
 
   const onClickStart = () => {
-    setImg([...img_orig]);
+    const [img, e] = shuffle(dimension, img_orig);
+    setImg([...img]);
+    setEmpty(e);
   };
 
   function checkFinished() {

@@ -17,7 +17,7 @@ function loadCanvas() {
             const dataurl = canvas.toDataURL();
             sessionStorage.setItem("img" + i, dataurl);
         };
-        img.src = "src/assets/square.jpg";
+        img.src = "src/assets/square.avif";
     }
     console.log("Image splitter completed.")
 }
