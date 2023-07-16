@@ -116,7 +116,7 @@ function Board() {
     }
     img_orig[i] = [data, i];
   }
-  img_orig[empty] = ["src/assets/transparent.png", empty];
+  img_orig[empty] = ["/transparent.png", empty];
 
   const onClickStart = () => {
     const [img, e] = shuffle(dimension, img_orig);
