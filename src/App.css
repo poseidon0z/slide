@@ -1,0 +1,22 @@
+.board {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 0.1em;
+ border-style: solid;
+ border-radius: 0.4em;
+ border-color: rgb(150, 150, 150);
+}
+
+.tile {
+    border-radius: 0.25em;
+    width: 9em;
+    height: 9em;
+}
+
+.start-btn {
+    border-radius: 0.25em;
+    border-width: 0.2em;
+    border-style: solid;
+    border-color: rgb(150, 150, 150);
+    margin-top: -0.2em;
+}
