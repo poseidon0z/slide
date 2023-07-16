@@ -170,7 +170,7 @@ function Board() {
           ))}
         </div>
         <Button selected="start-btn" clickHandler={onClickStart}>
-          Start
+          Start!
         </Button>
       </>
     );
