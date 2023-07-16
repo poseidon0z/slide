@@ -65,6 +65,7 @@ function move(
 
 function shuffle(
   dimension: number,
+  empty: number,
   imgs: [string, number][]
 ): [[string, number][], number] {
   const DIRECTIONS = [
@@ -74,8 +75,8 @@ function shuffle(
     [0, 1],
   ]; // Up, Down, Left, Right
   // Shuffle the puzzle using Fisher-Yates algorithm
-  var emptyRow = dimension - 1;
-  var emptyCol = dimension - 1;
+  var emptyRow = Math.floor(empty / 3);
+  var emptyCol = empty % 3;
   var numSwaps = 100; // Number of random swaps to perform
 
   while (numSwaps > 0) {
@@ -89,6 +90,7 @@ function shuffle(
       newCol >= 0 &&
       newCol < dimension
     ) {
+      // console.log(emptyRow, emptyCol);
       // Swap the empty cell with the neighbor
       const temp = imgs[emptyRow * dimension + emptyCol];
       imgs[emptyRow * dimension + emptyCol] = imgs[newRow * dimension + newCol];
@@ -99,8 +101,8 @@ function shuffle(
       numSwaps--;
     }
   }
-  const empty = emptyRow + emptyCol * 3;
-  return [imgs, empty];
+  const emp = emptyCol + emptyRow * 3;
+  return [imgs, emp];
 }
 
 function Board() {
@@ -120,9 +122,10 @@ function Board() {
   img_orig[empty] = [transparent, empty];
 
   const onClickStart = () => {
-    const [img, e] = shuffle(dimension, img_orig);
+    const [img, e] = shuffle(dimension, empty, img_orig);
     setImg([...img]);
     setEmpty(e);
+    // console.log("Empty is:", e);
   };
 
   function checkFinished() {
@@ -147,7 +150,7 @@ function Board() {
     // img.forEach((i) => {
     //   console.log(i[1]);
     // });
-
+    // console.log("empty is: " + e);
     setEmpty(e);
     checkFinished();
   };

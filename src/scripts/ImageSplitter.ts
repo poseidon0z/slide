@@ -20,6 +20,7 @@ function ImageSplitter(a: string) {
         img.src = a;
     }
     console.log("Image splitter completed.")
+    return true;
 }
 
 export default ImageSplitter;
