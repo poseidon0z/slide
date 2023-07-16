@@ -1,4 +1,4 @@
-function loadCanvas() {
+function ImageSplitter(a: string) {
     console.log("Image splitter started.");
 
     const n = 3;
@@ -13,12 +13,13 @@ function loadCanvas() {
             const width = img.naturalWidth;
             canvas.height = height/n;
             canvas.width = width/n;
-            ctx.drawImage(img, (i%n) * width/n , (Math.floor(i/n)) * height/n, height/n, width/n, 0, 0, height/n, width/n);
+            ctx!.drawImage(img, (i%n) * width/n , (Math.floor(i/n)) * height/n, height/n, width/n, 0, 0, height/n, width/n);
             const dataurl = canvas.toDataURL();
             sessionStorage.setItem("img" + i, dataurl);
         };
-        img.src = "/square.avif";
+        img.src = a;
     }
     console.log("Image splitter completed.")
 }
-loadCanvas();
+
+export default ImageSplitter;

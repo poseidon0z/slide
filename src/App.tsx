@@ -1,9 +1,11 @@
 import Board from "./components/Board";
 
-import "./scripts/ImageSplitter.js";
+import ImageSplitter from "./scripts/ImageSplitter.ts";
+import square from "/src/assets/square.avif";
 import "./App.css";
 
 function App() {
+  ImageSplitter(square);
   return <Board />;
 }
 

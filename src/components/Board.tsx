@@ -1,5 +1,6 @@
 import Tile from "./Tile";
 import Button from "./Button";
+import transparent from "/src/assets/transparent.png";
 import { useState } from "react";
 
 function move(
@@ -116,7 +117,7 @@ function Board() {
     }
     img_orig[i] = [data, i];
   }
-  img_orig[empty] = ["/transparent.png", empty];
+  img_orig[empty] = [transparent, empty];
 
   const onClickStart = () => {
     const [img, e] = shuffle(dimension, img_orig);
