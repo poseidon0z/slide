@@ -1,6 +1,7 @@
 import Tile from "./Tile";
 import Button from "./Button";
 import transparent from "/src/assets/transparent.png";
+import fail from "/src/assets/fail.png";
 import { useState } from "react";
 
 function move(
@@ -115,7 +116,7 @@ function Board() {
   for (let i = 0; i < dimension * dimension; i++) {
     let data = sessionStorage.getItem("img" + i);
     if (data === null) {
-      data = "src/assets/square.jpg";
+      data = fail;
     }
     img_orig[i] = [data, i];
   }
