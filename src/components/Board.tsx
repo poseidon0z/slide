@@ -109,7 +109,6 @@ function shuffle(
 function Board() {
   const dimension = 3;
   const [empty, setEmpty] = useState(dimension * dimension - 1);
-  const [img, setImg] = useState<[string, number][]>([]);
   const [finished, setFinished] = useState(false);
 
   var img_orig: [string, number][] = [];
@@ -121,7 +120,7 @@ function Board() {
     img_orig[i] = [data, i];
   }
   img_orig[empty] = [transparent, empty];
-
+  const [img, setImg] = useState<[string, number][]>(img_orig);
   const onClickStart = () => {
     const [img, e] = shuffle(dimension, empty, img_orig);
     setImg([...img]);
@@ -170,7 +169,7 @@ function Board() {
           ))}
         </div>
         <Button selected="start-btn" clickHandler={onClickStart}>
-          Start!
+          Shuffle!
         </Button>
       </>
     );
