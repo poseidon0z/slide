@@ -16,11 +16,14 @@
 }
 
 .start-btn {
-    display: flex;
-    margin: auto;
     border-radius: 0.3em;
     border-width: 0.3em;
     border-style: solid;
     border-color: rgb(150, 150, 150);
     background-color: rgb(100, 100, 100);
+}
+
+.board-bottom {
+    display: flex;
+    justify-content: space-between;
 }

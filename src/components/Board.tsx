@@ -121,6 +121,7 @@ function Board() {
   }
   img_orig[empty] = [transparent, empty];
   const [img, setImg] = useState<[string, number][]>(img_orig);
+  const [count, setCount] = useState(0);
   const onClickStart = () => {
     const [img, e] = shuffle(dimension, empty, img_orig);
     setImg([...img]);
@@ -152,6 +153,7 @@ function Board() {
     // });
     // console.log("empty is: " + e);
     setEmpty(e);
+    setCount(count + 1);
     checkFinished();
   };
 
@@ -168,13 +170,16 @@ function Board() {
             ></Tile>
           ))}
         </div>
-        <Button selected="start-btn" clickHandler={onClickStart}>
-          Shuffle!
-        </Button>
+        <div className="board-bottom">
+          <Button selected="start-btn" clickHandler={onClickStart}>
+            Shuffle!
+          </Button>
+          <h3>Total moves: {count}</h3>
+        </div>
       </>
     );
   } else {
-    return <div>Finished...</div>;
+    return <div>Finished in {count} moves!</div>;
   }
 }
 
