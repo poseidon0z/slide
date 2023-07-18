@@ -1,25 +1,25 @@
 .board {
  display: grid;
  grid-template-columns: repeat(3, 1fr);
- gap: 0.5vmin;
+ gap: 0.25em;
  border-style: solid;
- border-radius: 2vmin;
+ border-radius: 1.3em;
  border-color: rgb(150, 150, 150);
 }
 
 .tile {
-    border-radius: 2vmin;
-    width: 25vmin;
-    max-width: 200px;
-    height: 25vmin;
-    max-height: 200px;
+    border-radius: 1em;
+    width: 14em;
+    max-width: 31vmin;
+    height: 14em;
+    max-height: 31vmin;
 }
 
 .start-btn {
     display: flex;
     margin: auto;
-    border-radius: 2vmin;
-    border-width: 1vmin;
+    border-radius: 0.3em;
+    border-width: 0.3em;
     border-style: solid;
     border-color: rgb(150, 150, 150);
     background-color: rgb(100, 100, 100);
