@@ -10,7 +10,7 @@ function App() {
   ImageSplitter(square);
   const [started, setStarted] = useState(false);
   if (started) {
-    return <Board />;
+    return <Board emp_tile={8} />;
   } else {
     return (
       <Button

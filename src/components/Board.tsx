@@ -4,6 +4,10 @@ import transparent from "/src/assets/transparent.png";
 import fail from "/src/assets/fail.png";
 import { useState } from "react";
 
+interface Props {
+  emp_tile: number;
+}
+
 function move(
   clicked: number,
   dimension: number,
@@ -106,7 +110,7 @@ function shuffle(
   return [imgs, emp];
 }
 
-function Board() {
+function Board({ emp_tile }: Props) {
   const dimension = 3;
   const [empty, setEmpty] = useState(dimension * dimension - 1);
   const [finished, setFinished] = useState(false);
@@ -119,7 +123,7 @@ function Board() {
     }
     img_orig[i] = [data, i];
   }
-  img_orig[empty] = [transparent, empty];
+  img_orig[emp_tile] = [transparent, empty];
   const [img, setImg] = useState<[string, number][]>(img_orig);
   const [count, setCount] = useState(0);
   const onClickStart = () => {
