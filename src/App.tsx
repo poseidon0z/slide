@@ -14,7 +14,7 @@ function App() {
   } else {
     return (
       <Button
-        selected="btn-success"
+        selected="action-btn"
         clickHandler={() => {
           setStarted(true);
         }}

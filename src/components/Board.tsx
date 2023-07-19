@@ -171,7 +171,7 @@ function Board() {
           ))}
         </div>
         <div className="board-bottom">
-          <Button selected="start-btn" clickHandler={onClickStart}>
+          <Button selected="action-btn shuffle-btn" clickHandler={onClickStart}>
             Shuffle!
           </Button>
           <h3>Total moves: {count}</h3>
