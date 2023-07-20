@@ -1,16 +1,31 @@
 import Board from "./components/Board";
-
 import ImageSplitter from "./scripts/ImageSplitter.ts";
 import square from "/src/assets/square.avif";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./components/Button.tsx";
 
 function App() {
-  ImageSplitter(square);
+  const [images, setImages] = useState<string[]>([]);
   const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      console.log("Called fetch");
+      const images = await ImageSplitter(square);
+      setImages(images);
+    }
+    if (started) {
+      fetchData();
+    }
+  }, [started]);
+
   if (started) {
-    return <Board emp_tile={8} />;
+    if (images.length === 0) {
+      return <h1>Loading...</h1>;
+    } else {
+      return <Board emp_tile={8} images={images} />;
+    }
   } else {
     return (
       <Button

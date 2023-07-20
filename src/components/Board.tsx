@@ -1,11 +1,11 @@
 import Tile from "./Tile";
 import Button from "./Button";
 import transparent from "/src/assets/transparent.png";
-import fail from "/src/assets/fail.png";
 import { useState } from "react";
 
 interface Props {
   emp_tile: number;
+  images: string[];
 }
 
 function move(
@@ -110,19 +110,12 @@ function shuffle(
   return [imgs, emp];
 }
 
-function Board({ emp_tile }: Props) {
+function Board({ emp_tile, images }: Props) {
   const dimension = 3;
   const [empty, setEmpty] = useState(dimension * dimension - 1);
   const [finished, setFinished] = useState(false);
 
-  var img_orig: [string, number][] = [];
-  for (let i = 0; i < dimension * dimension; i++) {
-    let data = sessionStorage.getItem("img" + i);
-    if (data === null) {
-      data = fail;
-    }
-    img_orig[i] = [data, i];
-  }
+  var img_orig: [string, number][] = images.map((data, index) => [data, index]);
   img_orig[emp_tile] = [transparent, empty];
   const [img, setImg] = useState<[string, number][]>(img_orig);
   const [count, setCount] = useState(0);
