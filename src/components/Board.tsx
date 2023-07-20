@@ -95,7 +95,6 @@ function shuffle(
       newCol >= 0 &&
       newCol < dimension
     ) {
-      // console.log(emptyRow, emptyCol);
       // Swap the empty cell with the neighbor
       const temp = imgs[emptyRow * dimension + emptyCol];
       imgs[emptyRow * dimension + emptyCol] = imgs[newRow * dimension + newCol];
@@ -104,6 +103,7 @@ function shuffle(
       emptyRow = newRow;
       emptyCol = newCol;
       numSwaps--;
+      // console.log(emptyRow, emptyCol);
     }
   }
   const emp = emptyCol + emptyRow * 3;
@@ -112,7 +112,7 @@ function shuffle(
 
 function Board({ emp_tile, images }: Props) {
   const dimension = 3;
-  const [empty, setEmpty] = useState(dimension * dimension - 1);
+  const [empty, setEmpty] = useState(emp_tile);
   const [finished, setFinished] = useState(false);
 
   var img_orig: [string, number][] = images.map((data, index) => [data, index]);
@@ -120,8 +120,12 @@ function Board({ emp_tile, images }: Props) {
   const [img, setImg] = useState<[string, number][]>(img_orig);
   const [count, setCount] = useState(0);
   const onClickStart = () => {
-    const [img, e] = shuffle(dimension, empty, img_orig);
-    setImg([...img]);
+    // console.log("Empty is:", empty);
+    const [shuffledImgs, e] = shuffle(dimension, empty, img);
+    // console.log(shuffledImgs.map((data) => data[1]));
+    setImg([...shuffledImgs]);
+    setFinished(false); // Reset the finished state when shuffling
+    setCount(0);
     setEmpty(e);
     // console.log("Empty is:", e);
   };
