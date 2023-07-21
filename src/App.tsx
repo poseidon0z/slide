@@ -1,4 +1,4 @@
-import Board from "./components/Board";
+import MainPage from "./components/MainPage.tsx";
 import ImageSplitter from "./scripts/ImageSplitter.ts";
 import square from "/src/assets/square.avif";
 import "./App.css";
@@ -24,7 +24,7 @@ function App() {
     if (images.length === 0) {
       return <h1>Loading...</h1>;
     } else {
-      return <Board emp_tile={8} images={images} />;
+      return <MainPage empty={8} dimension={3} images={images} />;
     }
   } else {
     return (
