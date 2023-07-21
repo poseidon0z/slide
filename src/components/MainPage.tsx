@@ -125,14 +125,16 @@ function MainPage({ images, empty, dimension }: Props) {
   const [state, setState] = useState(solution);
 
   const checkSolved = (state: [string, number][]) => {
+    console.log("Check");
     var flag = true;
     for (let i = 0; i < dimension * dimension; i++) {
       if (state[i][1] != i) {
         flag = false;
+        console.log("Broke check at ", i);
         break;
       }
     }
-    return flag;
+    setSolved(flag);
   };
 
   const onClickShuffle = () => {
@@ -165,7 +167,7 @@ function MainPage({ images, empty, dimension }: Props) {
             selected="action-btn shuffle-btn"
             clickHandler={onClickShuffle}
           >
-            Shuffle!
+            Shuffle again!
           </Button>
           <h3>Total moves: {moves}</h3>
         </div>
