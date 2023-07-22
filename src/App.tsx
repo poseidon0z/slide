@@ -28,14 +28,17 @@ function App() {
     }
   } else {
     return (
-      <Button
-        selected="action-btn"
-        clickHandler={() => {
-          setStarted(true);
-        }}
-      >
-        Start Slide!
-      </Button>
+      <>
+        <h1 className="game-name">Slide!</h1>
+        <Button
+          selected="action-btn"
+          clickHandler={() => {
+            setStarted(true);
+          }}
+        >
+          Start Slide!
+        </Button>
+      </>
     );
   }
 }

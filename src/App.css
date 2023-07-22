@@ -29,13 +29,23 @@
 }
 
 .action-btn {
+    display: flex;
     border-style: solid;
     border-width: 0.2em;
     border-color: rgb(200, 200, 200);
     background-color: rgb(200, 200, 200);
     color: rgb(50, 50, 50);
+    margin: auto;
 }
 
 .action-btn:hover {
     background-color: rgb(150, 200, 100);
+}
+
+.game-name {
+    font-family: "optima";
+    font-weight: bold;
+    font-size: 5em;
+    font-style: italic;
+    color: rgb(210, 200, 220);
 }
