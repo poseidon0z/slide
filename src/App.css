@@ -20,6 +20,7 @@
     padding: 0.4em;
     height: 3em;
     align-self: center;
+    text-align: center;
 }
 
 .board-bottom {
@@ -41,10 +42,11 @@
     background-color: rgb(150, 200, 100);
 }
 
-.game-name {
+.heading-text {
     font-family: "optima";
     font-weight: bold;
     font-size: 5em;
     font-style: italic;
-    color: rgb(210, 200, 220);
+    color: rgb(210, 210, 210);
+    text-align: center;
 }

@@ -29,7 +29,7 @@ function App() {
   } else {
     return (
       <>
-        <h1 className="game-name">Slide!</h1>
+        <h1 className="heading-text">Slide!</h1>
         <Button
           selected="action-btn"
           clickHandler={() => {
