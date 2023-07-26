@@ -31,7 +31,7 @@ function App() {
       <>
         <h1 className="heading-text">Slide!</h1>
         <Button
-          selected="action-btn"
+          selected="action-btn center"
           clickHandler={() => {
             setStarted(true);
           }}
