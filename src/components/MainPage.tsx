@@ -161,7 +161,11 @@ function MainPage({ images, empty, dimension }: Props) {
   if (solved) {
     return (
       <>
-        <h1 className="heading-text">Congrats on Finishing!</h1>
+        <h1 className="heading-text">
+          Congrats!
+          <br />
+          You finished in <span className="blue">{moves}</span> moves.
+        </h1>
         <div className="board-bottom">
           <Button
             selected="action-btn shuffle-btn"
@@ -169,7 +173,6 @@ function MainPage({ images, empty, dimension }: Props) {
           >
             Shuffle again!
           </Button>
-          <h3>Total moves: {moves}</h3>
         </div>
       </>
     );
