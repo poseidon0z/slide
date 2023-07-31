@@ -1,5 +1,5 @@
 async function ImageSplitter(a: string) {
-    console.log("Image splitter started.");
+    // console.log("Image splitter started.");
 
     const n = 3;
     var images:string[] = [];
@@ -25,7 +25,7 @@ async function ImageSplitter(a: string) {
         };
         img.src = a;
     }});
-    console.log("Image splitter completed.")
+    // console.log("Image splitter completed.")
     return images;
 }
 

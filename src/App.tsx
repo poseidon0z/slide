@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      console.log("Called fetch");
+      // console.log("Called fetch");
       const images = await ImageSplitter(square);
       setImages(images);
     }
