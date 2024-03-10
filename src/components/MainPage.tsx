@@ -1,9 +1,9 @@
-import Board from "./Board.tsx";
-import Button from "./Button.tsx";
+import Board from './Board.tsx';
+import Button from './Button.tsx';
 
-import transparent from "/src/assets/transparent.png";
+import transparent from '/src/assets/transparent.png';
 
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 
 interface Props {
   images: string[];
@@ -118,6 +118,61 @@ function MainPage({ images, empty, dimension }: Props) {
   const [solved, setSolved] = useState(false);
   const [moves, setMoves] = useState(0);
 
+  useEffect(() => {
+    const handleArrow = (event: KeyboardEvent) => {
+      switch (event.key) {
+        case 'ArrowUp':
+          if (event.shiftKey) {
+            onClick(((currentEmpty % dimension) + 6).toString());
+            console.log(((currentEmpty % dimension) + 6).toString());
+          } else if (currentEmpty < dimension * dimension - dimension) {
+            onClick(
+              ((currentEmpty + dimension) % (dimension * dimension)).toString()
+            );
+          }
+          break;
+        case 'ArrowDown':
+          if (event.shiftKey) {
+            onClick((currentEmpty % dimension).toString());
+          } else if (currentEmpty > dimension - 1) {
+            onClick(
+              ((currentEmpty - dimension) % (dimension * dimension)).toString()
+            );
+          }
+          break;
+        case 'ArrowLeft':
+          if (event.shiftKey) {
+            onClick((Math.floor(currentEmpty / dimension) * 3 + 2).toString());
+          } else if ((currentEmpty + 1) % dimension != 0) {
+            onClick(
+              (
+                Math.floor(currentEmpty / dimension) * dimension +
+                ((currentEmpty + 1) % dimension)
+              ).toString()
+            );
+          }
+          break;
+        case 'ArrowRight':
+          if (event.shiftKey) {
+            onClick((Math.floor(currentEmpty / dimension) * 3).toString());
+          } else if (currentEmpty % dimension != 0) {
+            onClick(
+              (
+                Math.floor(currentEmpty / dimension) * dimension +
+                ((currentEmpty - 1) % dimension)
+              ).toString()
+            );
+          }
+          break;
+      }
+    };
+    window.addEventListener('keydown', handleArrow);
+
+    return () => {
+      window.removeEventListener('keydown', handleArrow);
+    };
+  }, [currentEmpty]);
+
   const solution: [string, number][] = images.map((data, index) => {
     return index == empty ? [transparent, index] : [data, index];
   });
@@ -125,12 +180,10 @@ function MainPage({ images, empty, dimension }: Props) {
   const [state, setState] = useState(solution);
 
   const checkSolved = (state: [string, number][]) => {
-    console.log("Check");
     var flag = true;
     for (let i = 0; i < dimension * dimension; i++) {
       if (state[i][1] != i) {
         flag = false;
-        console.log("Broke check at ", i);
         break;
       }
     }
