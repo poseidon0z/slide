@@ -81,8 +81,8 @@ function shuffle(
     [0, 1],
   ]; // Up, Down, Left, Right
 
-  var emptyRow = Math.floor(empty / 3);
-  var emptyCol = empty % 3;
+  var emptyRow = Math.floor(empty / dimension);
+  var emptyCol = empty % dimension;
   var numSwaps = 100; // Number of random swaps to perform
 
   while (numSwaps > 0) {
@@ -109,7 +109,7 @@ function shuffle(
     }
   }
 
-  const newEmpty = emptyCol + emptyRow * 3;
+  const newEmpty = emptyCol + emptyRow * dimension;
   return [state, newEmpty];
 }
 
@@ -123,8 +123,18 @@ function MainPage({ images, empty, dimension }: Props) {
       switch (event.key) {
         case 'ArrowUp':
           if (event.shiftKey) {
-            onClick(((currentEmpty % dimension) + 6).toString());
-            console.log(((currentEmpty % dimension) + 6).toString());
+            onClick(
+              (
+                (currentEmpty % dimension) +
+                dimension * (dimension - 1)
+              ).toString()
+            );
+            console.log(
+              (
+                (currentEmpty % dimension) +
+                dimension * (dimension - 1)
+              ).toString()
+            );
           } else if (currentEmpty < dimension * dimension - dimension) {
             onClick(
               ((currentEmpty + dimension) % (dimension * dimension)).toString()
@@ -142,7 +152,13 @@ function MainPage({ images, empty, dimension }: Props) {
           break;
         case 'ArrowLeft':
           if (event.shiftKey) {
-            onClick((Math.floor(currentEmpty / dimension) * 3 + 2).toString());
+            onClick(
+              (
+                Math.floor(currentEmpty / dimension) * dimension +
+                dimension -
+                1
+              ).toString()
+            );
           } else if ((currentEmpty + 1) % dimension != 0) {
             onClick(
               (
@@ -154,7 +170,9 @@ function MainPage({ images, empty, dimension }: Props) {
           break;
         case 'ArrowRight':
           if (event.shiftKey) {
-            onClick((Math.floor(currentEmpty / dimension) * 3).toString());
+            onClick(
+              (Math.floor(currentEmpty / dimension) * dimension).toString()
+            );
           } else if (currentEmpty % dimension != 0) {
             onClick(
               (
