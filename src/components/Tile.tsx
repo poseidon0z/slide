@@ -1,19 +1,31 @@
 interface Props {
+  n: number;
+  val: number;
   id: string;
   img: string;
   onClick: (id: string) => void;
 }
 
-function Tile({ id, img, onClick }: Props) {
+function Tile({ n, val, id, img, onClick }: Props) {
   return (
-    <img
+    <div
       className="tile"
-      id={id}
-      src={img}
-      onClick={() => {
-        onClick(id);
+      style={{
+        width: (80 - n / 2 + 0.5) / n + 'vmin',
+        height: (80 - n / 2 + 0.5) / n + 'vmin',
       }}
-    ></img>
+    >
+      <div>
+        <img
+          className="tile-image"
+          src={img}
+          onClick={() => {
+            onClick(id);
+          }}
+        />
+      </div>
+      <p className="val">{val + 1}</p>
+    </div>
   );
 }
 

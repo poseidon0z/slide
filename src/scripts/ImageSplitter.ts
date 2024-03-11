@@ -1,11 +1,10 @@
-async function ImageSplitter(a: string) {
+async function ImageSplitter(a: string, dimension: number) {
     // console.log("Image splitter started.");
 
-    const n = 3;
     var images:string[] = [];
     await new Promise<void>((resolve) => {
         let loadedImages = 0;
-    for (let i = 0; i < 9; i++){
+    for (let i = 0; i < dimension * dimension; i++){
         const img = new Image();
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext("2d");
@@ -13,13 +12,27 @@ async function ImageSplitter(a: string) {
         img.onload = () => {
             const height = img.naturalHeight;
             const width = img.naturalWidth;
-            canvas.height = height/n;
-            canvas.width = width/n;
-            ctx!.drawImage(img, (i%n) * width/n , (Math.floor(i/n)) * height/n, height/n, width/n, 0, 0, height/n, width/n);
+
+            const size = Math.min(width, height);
+            const xOffset = (width - size) / 2;
+            const yOffset = (height - size) / 2;
+            canvas.height = size/dimension;
+            canvas.width = size/dimension;
+            ctx!.drawImage(
+                img,
+                xOffset + ((i % dimension) * size) / dimension,
+                yOffset + (Math.floor(i / dimension) * size) / dimension,
+                size / dimension,
+                size / dimension,
+                0,
+                0,
+                size / dimension,
+                size / dimension
+              );
             const dataurl = canvas.toDataURL();
             images[i] = dataurl;
             loadedImages++;
-            if (loadedImages === 9) {
+            if (loadedImages === dimension * dimension) {
                 resolve();
             }
         };

@@ -1,8 +1,6 @@
 import Board from './Board.tsx';
 import Button from './Button.tsx';
-
 import transparent from '/src/assets/transparent.png';
-
 import { useState, useEffect } from 'react';
 
 interface Props {
@@ -250,7 +248,7 @@ function MainPage({ images, empty, dimension }: Props) {
   } else {
     return (
       <>
-        <Board images={state} onClick={onClick}></Board>
+        <Board images={state} onClick={onClick} dimension={dimension}></Board>
         <div className="board-bottom">
           <Button
             selected="action-btn shuffle-btn"

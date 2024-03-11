@@ -1,18 +1,36 @@
 .board {
- display: grid;
- grid-template-columns: repeat(3, 1fr);
- gap: 0.25em;
- border-style: solid;
- border-radius: 1.3em;
- border-color: rgb(150, 150, 150);
+    display: grid;
+    width: 80vmin;
+    height: 80vmin;
+    gap: 0.5vmin;
+    border-style: solid;
+    border-radius: 1.3em;
+    border-color: rgb(150, 150, 150);
 }
 
 .tile {
+    position: relative;
     border-radius: 1em;
-    width: 14em;
     max-width: 31vmin;
-    height: 14em;
     max-height: 31vmin;
+
+}
+
+.tile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+}
+
+.val {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.473);
 }
 
 .shuffle-btn {
