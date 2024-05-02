@@ -16,9 +16,9 @@ function App() {
   const [started, setStarted] = useState(false);
   const [dimension, setDimension] = useState(3);
 
-  const [imageData, setImageData] = useState<PixabayImage | null>(null);
+  // const [imageData, setImageData] = useState<PixabayImage | null>(null);
   const [imageBase64, setImageBase64] = useState<string>('');
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
   const API_KEY = '42810216-6cc735c1d5bfb64c08d687dd2'; // Replace with your actual Pixabay API key
   const query = 'square+colors'; // You can change the search query as needed
 
@@ -38,7 +38,7 @@ function App() {
 
         if (data.hits.length > 0) {
           const image = data.hits[0] as PixabayImage;
-          setImageData(image);
+          // setImageData(image);
 
           // Convert image to base64
           const imageBlob = await fetch(image.webformatURL).then((res) =>
@@ -54,7 +54,7 @@ function App() {
           throw new Error('No images found');
         }
       } catch (error: any) {
-        setError(error.message);
+        // setError(error.message);
       }
     };
 
