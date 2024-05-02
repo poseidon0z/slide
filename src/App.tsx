@@ -14,13 +14,14 @@ interface PixabayImage {
 function App() {
   const [images, setImages] = useState<string[]>([]);
   const [started, setStarted] = useState(false);
+  const [dimension, setDimension] = useState(3);
 
   const [imageData, setImageData] = useState<PixabayImage | null>(null);
   const [imageBase64, setImageBase64] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const API_KEY = '42810216-6cc735c1d5bfb64c08d687dd2'; // Replace with your actual Pixabay API key
   const query = 'square+colors'; // You can change the search query as needed
-  const dimension = 4;
+
   useEffect(() => {
     const fetchImage = async () => {
       try {
@@ -70,7 +71,7 @@ function App() {
     }
 
     fetchData();
-  }, [started, imageBase64]);
+  }, [started, imageBase64, dimension]);
 
   return (
     <Router basename="/slide">
@@ -81,6 +82,24 @@ function App() {
             element={
               <>
                 <h1 className="heading-text">Slide!</h1>
+                <h2 style={{ width: '80%', display: 'inline' }}>
+                  Number of rows/columns:{' '}
+                </h2>
+                <select
+                  defaultValue={3}
+                  onChange={(e) => {
+                    setDimension(parseInt(e.target.value));
+                  }}
+                  style={{
+                    margin: '10px',
+                    justifySelf: 'center',
+                    display: 'inline',
+                  }}
+                >
+                  <option value={3}>3</option> <option value={4}>4</option>
+                  <option value={5}>5</option>
+                  <option value={6}>6</option>
+                </select>
                 <Link to="/play">
                   <Button
                     selected="action-btn center"

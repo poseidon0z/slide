@@ -242,6 +242,11 @@ function MainPage({ images, empty, dimension }: Props) {
           >
             Shuffle again!
           </Button>
+          <a href="/">
+            <button type="button" className={'btn action-btn shuffle-btn'}>
+              Back to home
+            </button>
+          </a>
         </div>
       </>
     );
@@ -256,6 +261,11 @@ function MainPage({ images, empty, dimension }: Props) {
           >
             Shuffle!
           </Button>
+          <a href="/" style={{ margin: '10px' }}>
+            <button type="button" className={'btn action-btn shuffle-btn'}>
+              Back to home
+            </button>
+          </a>
           <h3>Total moves: {moves}</h3>
         </div>
       </>
