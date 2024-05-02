@@ -9,6 +9,6 @@ Click on a tile to move the relative row/column uptil that tile towards the empt
 Arrow keys can be used to move the tiles next to the empty space into the space
 
 ## Link
-The game can be accessed [here](https://poseidon0z.github.io/slide/play)
+The game can be accessed [here](https://poseidon0z.github.io/slide/)
 
 Have fun :D
