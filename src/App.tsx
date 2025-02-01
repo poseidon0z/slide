@@ -74,7 +74,7 @@ function App() {
   }, [started, imageBase64, dimension]);
 
   return (
-    <Router basename="/slide">
+    <Router>
       <div>
         <Routes>
           <Route
